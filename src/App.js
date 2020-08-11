@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
+import MarkedContextProvider from './contexts/MarkedContext';
+import Editor from './components/Editor'
+import Previewer from './components/Previewer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="md-previewer">
+      <MarkedContextProvider>
+        <Tabs defaultActiveKey="markdown" id="tabs">
+          <Tab eventKey="markdown" title="Markdown">
+            <Editor />
+          </Tab>
+          <Tab eventKey="preview" title="Preview">
+            <Previewer />
+          </Tab>
+        </Tabs>
+      </MarkedContextProvider>
     </div>
   );
 }
